@@ -2,15 +2,17 @@ package service;
 
 import dao.LabelDao;
 import dao.daoImpl.LabelDaoImpl;
-import lombok.NoArgsConstructor;
 import model.Label;
 
 import java.util.List;
 
-@NoArgsConstructor
 public class LabelService {
 
     private LabelDao labelDao = new LabelDaoImpl();
+
+    public LabelService() {
+
+    }
 
     public LabelService(LabelDao labelDao) {
         this.labelDao = labelDao;

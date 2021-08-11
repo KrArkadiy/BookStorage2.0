@@ -23,7 +23,7 @@ public class PostDaoImpl implements PostDao {
     public void update(Post post) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(post);
+        session.saveOrUpdate(post);
         tx1.commit();
         session.close();
     }
@@ -32,7 +32,7 @@ public class PostDaoImpl implements PostDao {
     public void save(Post post) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.save(post);
+        session.saveOrUpdate(post);
         tx1.commit();
         session.close();
     }

@@ -97,12 +97,9 @@
                     <version>2.8.2</version>
                 </plugin>
                 <plugin>
-                    <groupId>org.liquibase</groupId>
-                    <artifactId>liquibase-maven-plugin</artifactId>
-                    <version>3.4.1</version>
-                    <configuration>
-                        <propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
-                    </configuration>
+                    <groupId>org.flywaydb</groupId>
+                    <artifactId>flyway-maven-plugin</artifactId>
+                    <version>4.0.3</version>
                 </plugin>
             </plugins>
         </pluginManagement>

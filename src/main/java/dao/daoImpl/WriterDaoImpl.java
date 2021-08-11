@@ -23,7 +23,7 @@ public class WriterDaoImpl implements WriterDao {
     public void update(Writer writer) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(writer);
+        session.saveOrUpdate(writer);
         tx1.commit();
         session.close();
     }
@@ -32,7 +32,7 @@ public class WriterDaoImpl implements WriterDao {
     public void save(Writer writer) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.save(writer);
+        session.saveOrUpdate(writer);
         tx1.commit();
         session.close();
     }

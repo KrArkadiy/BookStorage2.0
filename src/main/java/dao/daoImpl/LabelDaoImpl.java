@@ -24,7 +24,7 @@ public class LabelDaoImpl implements LabelDao {
     public void update(Label label) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.update(label);
+        session.saveOrUpdate(label);
         tx1.commit();
         session.close();
     }
@@ -33,7 +33,7 @@ public class LabelDaoImpl implements LabelDao {
     public void save(Label label) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
-        session.save(label);
+        session.saveOrUpdate(label);
         tx1.commit();
         session.close();
     }

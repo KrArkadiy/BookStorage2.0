@@ -2,15 +2,20 @@ package service;
 
 import dao.WriterDao;
 import dao.daoImpl.WriterDaoImpl;
-import lombok.NoArgsConstructor;
 import model.Writer;
 
 import java.util.List;
 
-@NoArgsConstructor
 public class WriterService {
 
     private WriterDao writerDao = new WriterDaoImpl();
+
+    public WriterService() {
+    }
+
+    public WriterService(WriterDao writerDao) {
+        this.writerDao = writerDao;
+    }
 
     public Writer getById(int id) {
         return writerDao.getById(id);

@@ -7,10 +7,17 @@ import model.Post;
 
 import java.util.List;
 
-@NoArgsConstructor
 public class PostService {
 
     private PostDao postDao = new PostDaoImpl();
+
+    public PostService() {
+
+    }
+
+    public PostService(PostDao postDao) {
+        this.postDao = postDao;
+    }
 
     public Post getById(int id){
         return postDao.getById(id);
