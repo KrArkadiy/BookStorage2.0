@@ -1,5 +1,6 @@
 package controller;
 
+import dao.daoImpl.PostDaoImpl;
 import model.Post;
 import service.PostService;
 
@@ -8,6 +9,12 @@ import java.util.List;
 public class PostController {
 
     private PostService postService;
+
+    private PostDaoImpl postDao;
+
+    public PostController(PostDaoImpl postDao) {
+        this.postDao = postDao;
+    }
 
     public PostController(PostService postService) {
         this.postService = postService;
