@@ -61,7 +61,7 @@ class PostControllerTest {
 
         postController.savePost(newPost);
 
-        verify(postController,times(1)).savePost(newPost);
+        verify(postController, times(1)).savePost(newPost);
     }
 
     @Test
@@ -76,7 +76,7 @@ class PostControllerTest {
 
         postController.updatePost(newPost);
 
-        verify(postController,times(1)).updatePost(newPost);
+        verify(postController, times(1)).updatePost(newPost);
     }
 
     @Test

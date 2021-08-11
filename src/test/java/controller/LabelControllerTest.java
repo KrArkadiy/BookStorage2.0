@@ -22,8 +22,8 @@ class LabelControllerTest {
     @Test
     void givenListOfLabels_whenRun_thenEqualListOfLabelsReturned() {
         List<Label> labels = new ArrayList<>();
-        labels.add(new Label( "First Label"));
-        labels.add(new Label( "Second Label"));
+        labels.add(new Label("First Label"));
+        labels.add(new Label("Second Label"));
         when(labelController.getAll()).thenReturn(labels);
 
         List<Label> testLabels = labelController.getAll();
@@ -34,7 +34,7 @@ class LabelControllerTest {
     @Test
     void givenId_whenRun_thenLabelWithThatIdReturned() {
         List<Label> labels = new ArrayList<>();
-        labels.add(new Label( "First Label"));
+        labels.add(new Label("First Label"));
         labels.add(new Label("Second Label"));
 
         when(labelController.getById(1)).thenReturn(labels.get(0));
