@@ -21,21 +21,23 @@ public class LabelDaoImpl implements LabelDao {
     }
 
     @Override
-    public void update(Label label) {
+    public Label update(Label label) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.saveOrUpdate(label);
         tx1.commit();
         session.close();
+        return getById(label.getId());
     }
 
     @Override
-    public void save(Label label) {
+    public Label save(Label label) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.saveOrUpdate(label);
         tx1.commit();
         session.close();
+        return label;
     }
 
     @Override

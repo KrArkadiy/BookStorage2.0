@@ -10,14 +10,8 @@ public class LabelController {
 
     private LabelService labelService;
 
-    private LabelDaoImpl labelDao;
-
     public LabelController(LabelService labelService) {
         this.labelService = labelService;
-    }
-
-    public LabelController(LabelDaoImpl labelDao) {
-        this.labelDao = labelDao;
     }
 
     public Label getById(int id){

@@ -8,9 +8,9 @@ public interface GenericDao<T, ID> {
 
     List<T> getAll();
 
-    void update(T t);
+    T update(T t);
 
-    void save(T t);
+    T save(T t);
 
     void deleteById(ID id);
 

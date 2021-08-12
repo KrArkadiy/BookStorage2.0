@@ -11,30 +11,36 @@ import java.util.List;
 public class PostDaoImpl implements PostDao {
     @Override
     public Post getById(Integer integer) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Post.class, integer);
+        Post recievedPost = HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Post.class, integer);
+        recievedPost.getLabels();
+        return recievedPost;
     }
 
     @Override
     public List<Post> getAll() {
-        return (List<Post>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("FROM posts").list();
+        List<Post> posts = (List<Post>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("FROM posts").list();
+        posts.stream().forEach(x->x.getLabels());
+        return posts;
     }
 
     @Override
-    public void update(Post post) {
+    public Post update(Post post) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.saveOrUpdate(post);
         tx1.commit();
         session.close();
+        return getById(post.getId());
     }
 
     @Override
-    public void save(Post post) {
+    public Post save(Post post) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.saveOrUpdate(post);
         tx1.commit();
         session.close();
+        return post;
     }
 
     @Override

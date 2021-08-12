@@ -10,12 +10,6 @@ public class WriterController {
 
     private WriterService writerService;
 
-    private WriterDaoImpl writerDao;
-
-    public WriterController(WriterDaoImpl writerDao) {
-        this.writerDao = writerDao;
-    }
-
     public WriterController(WriterService writerService) {
         this.writerService = writerService;
     }

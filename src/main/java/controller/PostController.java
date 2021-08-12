@@ -10,12 +10,6 @@ public class PostController {
 
     private PostService postService;
 
-    private PostDaoImpl postDao;
-
-    public PostController(PostDaoImpl postDao) {
-        this.postDao = postDao;
-    }
-
     public PostController(PostService postService) {
         this.postService = postService;
     }

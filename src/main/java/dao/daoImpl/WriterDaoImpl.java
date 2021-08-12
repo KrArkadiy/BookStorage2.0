@@ -11,30 +11,36 @@ import java.util.List;
 public class WriterDaoImpl implements WriterDao {
     @Override
     public Writer getById(Integer integer) {
-        return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Writer.class, integer);
+        Writer receivedWriter = HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Writer.class, integer);
+        receivedWriter.getPosts();
+        return receivedWriter;
     }
 
     @Override
     public List<Writer> getAll() {
-        return (List<Writer>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("FROM writers").list();
+        List<Writer> writers = (List<Writer>) HibernateSessionFactoryUtil.getSessionFactory().openSession().createQuery("FROM writers").list();
+        writers.stream().forEach(x-> x.getPosts());
+        return writers;
     }
 
     @Override
-    public void update(Writer writer) {
+    public Writer update(Writer writer) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.saveOrUpdate(writer);
         tx1.commit();
         session.close();
+        return getById(writer.getId());
     }
 
     @Override
-    public void save(Writer writer) {
+    public Writer save(Writer writer) {
         Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
         Transaction tx1 = session.beginTransaction();
         session.saveOrUpdate(writer);
         tx1.commit();
         session.close();
+        return writer;
     }
 
     @Override
